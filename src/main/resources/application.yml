@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: aulao-spring-security
@@ -5,9 +7,13 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-            client-id: 
-            client-secret: 
+          keycloak:
+            client-id: <nome da aplicacao client no keycloak>
+            client-secret: <secret da aplicacao>
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: <endereco do keycloak no realm correspondente>
       resourceserver:
         jwt:
-          issuer-uri: https://accounts.google.com
+          issuer-uri: <endereco do keycloak no realm correspondente>
